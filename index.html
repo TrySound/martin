@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>CodePen - Cool Slider</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/TrySound/patch-layout/master/dist/patch-layout.css">
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="dist/martin.css">
+	<style>
+
+body {
+	padding-bottom: 90px;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 2px dashed;
+}
+
+.title,
+.section-title {
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+
+.martin-slideshow {
+	background: rgba(0, 0, 0, .25);
+}
+
+.martin-slide {
+	padding: 60px;
+}
+
+
+.martin-prev,
+.martin-next {
+	cursor: pointer;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+	text-align: center;
+	font-size: 3em;
+	-webkit-user-select: none;
+}
+
+.martin-prev span,
+.martin-next span {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	transform: translateY(-50%);
+}
+
+.martin-prev {
+	left: 0;
+}
+
+.martin-next {
+	right: 0;
+}
+
+	</style>
+</head>
+
+<body>
+
+<div class="container">
+	<h1 class="title"><a href="https://github.com/trysound/martin">Martin Slider</a></h1>
+
+	<h2 class="section-title">No effect</h2>
+
+	<section class="martin-slideshow">
+		<article class="martin-slide">
+			<h1>Header</h1>
+			<p>Some description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 2</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 3</h2>
+			<p>Additional description</p>
+		</article>
+		<span class="martin-prev"><span class="ion-arrow-left-b"></span></span>
+		<span class="martin-next"><span class="ion-arrow-right-b"></span></span>
+	</section>
+
+	<h2 class="section-title">Horizontal slide + Autoplay</h2>
+
+	<section class="martin-slideshow martin-fx-horz" data-martin-autoplay="2000">
+		<article class="martin-slide">
+			<h1>Header</h1>
+			<p>Some description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 2</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 3</h2>
+			<p>Additional description</p>
+		</article>
+		<span class="martin-prev"><span class="ion-arrow-left-b"></span></span>
+		<span class="martin-next"><span class="ion-arrow-right-b"></span></span>
+	</section>
+
+	<h2 class="section-title">Vertical slide</h2>
+
+	<section class="martin-slideshow martin-fx-vert">
+		<article class="martin-slide">
+			<h1>Header</h1>
+			<p>Some description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 2</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 3</h2>
+			<p>Additional description</p>
+		</article>
+		<span class="martin-prev"><span class="ion-arrow-left-b"></span></span>
+		<span class="martin-next"><span class="ion-arrow-right-b"></span></span>
+	</section>
+
+	<h2 class="section-title">Fade</h2>
+
+	<section class="martin-slideshow martin-fx-fade">
+		<article class="martin-slide">
+			<h1>Header</h1>
+			<p>Some description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 2</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 3</h2>
+			<p>Additional description</p>
+		</article>
+		<span class="martin-prev"><span class="ion-arrow-left-b"></span></span>
+		<span class="martin-next"><span class="ion-arrow-right-b"></span></span>
+	</section>
+
+	<h2 class="section-title">Leave</h2>
+
+	<section class="martin-slideshow martin-fx-leave">
+		<article class="martin-slide">
+			<h1>Header</h1>
+			<p>Some description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 2</h2>
+			<p>Additional description</p>
+		</article>
+		<article class="martin-slide">
+			<h2>Addition 3</h2>
+			<p>Additional description</p>
+		</article>
+		<span class="martin-prev"><span class="ion-arrow-left-b"></span></span>
+		<span class="martin-next"><span class="ion-arrow-right-b"></span></span>
+	</section>
+</div>
+
+<script src="dist/martin.js"></script>
+
+</body>
+
+</html>

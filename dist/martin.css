@@ -1,0 +1,129 @@
+.martin-slideshow {
+
+    position: relative;
+}
+
+.martin-slide {
+
+    visibility: hidden;
+}
+
+.martin-slide:nth-of-type(n+2) {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    left: 0;
+}
+
+.martin-active {
+
+    visibility: visible;
+}
+
+.martin-ditr {
+
+    /* disable transition */
+
+    transition: none !important;
+}
+
+/* Effects */
+
+.martin-fx-horz {
+
+    overflow: hidden;
+}
+
+.martin-fx-horz .martin-slide {
+
+    visibility: visible;
+
+    transition: transform .5s;
+
+    transform: translateX(-100%);
+}
+
+.martin-fx-horz .martin-from-prev, .martin-fx-horz .martin-to-prev {
+
+    transform: translateX(-100%);
+}
+
+.martin-fx-horz .martin-from-next, .martin-fx-horz .martin-to-next {
+
+    transform: translateX(100%);
+}
+
+.martin-fx-horz .martin-active {
+
+    transform: translateX(0);
+}
+
+.martin-fx-vert {
+
+    overflow: hidden;
+}
+
+.martin-fx-vert .martin-slide {
+
+    visibility: visible;
+
+    transition: transform .5s;
+
+    transform: translateY(-100%);
+}
+
+.martin-fx-vert .martin-from-prev, .martin-fx-vert .martin-to-prev {
+
+    transform: translateY(-100%);
+}
+
+.martin-fx-vert .martin-from-next, .martin-fx-vert .martin-to-next {
+
+    transform: translateY(100%);
+}
+
+.martin-fx-vert .martin-active {
+
+    transform: translateY(0);
+}
+
+.martin-fx-fade .martin-slide {
+
+    visibility: visible;
+
+    transition: opacity .5s;
+
+    opacity: 0;
+}
+
+.martin-fx-fade .martin-active {
+
+    opacity: 1;
+}
+
+.martin-fx-leave .martin-slide {
+
+    visibility: visible;
+
+    transition: opacity 1s, transform 1s;
+
+    opacity: 0;
+}
+
+.martin-fx-leave .martin-from-prev, .martin-fx-leave .martin-from-next {
+
+    transform: scale(.75);
+}
+
+.martin-fx-leave .martin-active {
+
+    opacity: 1;
+
+    transform: scale(1);
+}

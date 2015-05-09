@@ -1,0 +1,96 @@
+.martin {
+	&-slideshow {
+		position: relative;
+	}
+
+	&-slide {
+		visibility: hidden;
+		&:nth-of-type(n+2) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	&-active {
+		visibility: visible;
+	}
+
+	&-ditr {
+		/* disable transition */
+		transition: none !important;
+	}
+}
+
+/* Effects */
+
+.martin-fx {
+	&-horz {
+		overflow: hidden;
+		.martin-slide {
+			visibility: visible;
+			transition: transform .5s;
+			transform: translateX(-100%);
+		}
+		.martin-from-prev,
+		.martin-to-prev {
+			transform: translateX(-100%);
+		}
+		.martin-from-next,
+		.martin-to-next {
+			transform: translateX(100%);
+		}
+		.martin-active {
+			transform: translateX(0);
+		}
+	}
+
+	&-vert {
+		overflow: hidden;
+		.martin-slide {
+			visibility: visible;
+			transition: transform .5s;
+			transform: translateY(-100%);
+		}
+		.martin-from-prev,
+		.martin-to-prev {
+			transform: translateY(-100%);
+		}
+		.martin-from-next,
+		.martin-to-next {
+			transform: translateY(100%);
+		}
+		.martin-active {
+			transform: translateY(0);
+		}
+	}
+
+	&-fade {
+		.martin-slide {
+			visibility: visible;
+			transition: opacity .5s;
+			opacity: 0;
+		}
+		.martin-active {
+			opacity: 1;
+		}
+	}
+
+	&-leave {
+		.martin-slide {
+			visibility: visible;
+			transition: opacity 1s, transform 1s;
+			opacity: 0;
+		}
+		.martin-from-prev,
+		.martin-from-next {
+			transform: scale(.75);
+		}
+		.martin-active {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}

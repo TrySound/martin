@@ -1,0 +1,20 @@
+{
+  "name": "martin",
+  "version": "0.0.1",
+  "description": "Simple vanillaJS slider",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bogdan Chadkin <trysound@yandex.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-postcss": "^5.1.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^1.2.1",
+    "gulp-uglify": "^1.2.0",
+    "postcss": "^4.1.9",
+    "postcss-nested": "^0.3.1"
+  }
+}
