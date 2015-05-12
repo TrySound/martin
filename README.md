@@ -4,35 +4,45 @@ Simple vanillaJS slider
 
 ## API
 
-`inst = new Slider(el || selector, options)`
+### inst = new Slider(el || selector, options)
 
-`inst.setTo(index)`
+**inst.setTo(index)**
 
-`inst.slideTo(index, direction)`
+`callback({ index })`
 
-`inst.slidePrev()`
+**inst.slideTo(index, direction)**
 
-`inst.slideNext()`
+`callback({ index, direction })`
 
-`inst.play(timeout)`
+**inst.slidePrev()**
 
-`inst.stop()`
+`callback({ index })`
+
+**inst.slideNext()**
+
+`callback({ index })`
+
+**inst.on(event, callback)**
+
+`event` is one of `set`, `slide`, `slidePrev`, `slideNext`
+
+Action will be prevented if callback will return `false`
+
+### Helpers
+
+**inst.attr(name)**
+
+Returns data-martin-* attribute value with related type
+
+**inst.listen(event, callback)**
+
+Listen system event on slider root-element
+
+**inst.listen(selector, event, callback)**
+
+Listen system event on slider children elements
 
 ## Core plugins
-
-### Autoplay
-
-**Options**
-
-```js
-{
-  autoplay: timeout
-}
-```
-
-**Root data-attributes**
-
-`data-martin-autoplay="timeout"`
 
 ### Controls
 

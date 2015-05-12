@@ -1,6 +1,6 @@
 {
   "name": "martin",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Simple vanillaJS slider",
   "main": "gulpfile.js",
   "scripts": {
@@ -10,7 +10,10 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer-core": "^5.1.11",
+    "del": "^1.1.1",
     "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-load-plugins": "^0.10.0",
     "gulp-postcss": "^5.1.6",
     "gulp-rename": "^1.2.2",
     "gulp-size": "^1.2.1",

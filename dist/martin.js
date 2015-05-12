@@ -48,7 +48,7 @@
 				prev = inst.slides[inst.index],
 				next = inst.slides[index];
 
-			if(next) {
+			if(next && trigger.call(inst, 'set', { index: index })) {
 				next = next.classList;
 				if(prev) {
 					prev = prev.classList;
@@ -64,8 +64,6 @@
 				next.remove(plugin + '-ditr');
 
 				inst.index = index;
-
-				trigger.call(inst, 'set');
 			}
 		},
 
@@ -80,39 +78,36 @@
 					dir = index > current;
 				}
 
-				if(inst.playing) {
-					inst.play();
+				if(trigger.call(inst, 'slide', { index: index, dir: dir }) !== false) {
+					prev = inst.slides[current].classList;
+					next = inst.slides[index].classList;
+
+					// Disable transition
+					prev.add(plugin + '-ditr');
+					next.add(plugin + '-ditr');
+					// Remove last classes
+					prev.remove(plugin + '-to-prev');
+					prev.remove(plugin + '-to-next');
+					next.remove(plugin + '-from-prev');
+					next.remove(plugin + '-from-next');
+					// Add directions
+					prev.add(plugin + (dir ? '-from-prev' : '-from-next'));
+					next.add(plugin + (! dir ? '-to-prev' : '-to-next'));
+					// Repaint
+					inst.slider.offsetHeight;
+					// Start transition
+					prev.remove(plugin + '-ditr');
+					next.remove(plugin + '-ditr');
+					prev.remove(plugin + '-active');
+					next.add(plugin + '-active');
+
+					inst.index = index;
+
+					return true;
 				}
-
-				prev = inst.slides[current].classList;
-				next = inst.slides[index].classList;
-
-				// Disable transition
-				prev.add(plugin + '-ditr');
-				next.add(plugin + '-ditr');
-				// Remove last classes
-				prev.remove(plugin + '-to-prev');
-				prev.remove(plugin + '-to-next');
-				next.remove(plugin + '-from-prev');
-				next.remove(plugin + '-from-next');
-				// Add directions
-				prev.add(plugin + (dir ? '-from-prev' : '-from-next'));
-				next.add(plugin + (! dir ? '-to-prev' : '-to-next'));
-				// Repaint
-				inst.slider.offsetHeight;
-				// Start transition
-				prev.remove(plugin + '-ditr');
-				next.remove(plugin + '-ditr');
-				prev.remove(plugin + '-active');
-				next.add(plugin + '-active');
-
-				trigger.call(inst, 'slide', { dir: dir });
-
-				inst.index = index;
-				return true;
-			} else {
-				return false;
 			}
+
+			return false;
 		},
 
 		slidePrev: function () {
@@ -121,8 +116,9 @@
 			if(index < 0) {
 				index = inst.slides.length - 1;
 			}
-			inst.slideTo(index, false);
-			trigger.call(inst, 'slidePrev');
+			if(trigger.call(inst, 'slidePrev', { index: index })) {
+				inst.slideTo(index, false);
+			}
 		},
 
 		slideNext: function () {
@@ -131,33 +127,8 @@
 			if(index > inst.slides.length - 1) {
 				index = 0;
 			}
-			inst.slideTo(index, true);
-			trigger.call(inst, 'slideNext');
-		},
-
-		play: function (timeout) {
-			var inst = this;
-
-			if(inst.slider) {
-				inst.stop();
-
-				if(timeout === undefined) {
-					timeout = inst._playTimeout;
-				} else {
-					inst._playTimeout = timeout;
-				}
-
-				inst._playInst = setTimeout(function() {
-					inst.slideNext();
-				}, timeout);
-				inst.playing = true;
-			}
-		},
-
-		stop: function () {
-			if(this.playing) {
-				clearTimeout(this._playInst);
-				this.playing = false;
+			if(trigger.call(inst, 'slideNext', { index: index })) {
+				inst.slideTo(index, true);
 			}
 		},
 
@@ -181,7 +152,17 @@
 		},
 
 		listen: function (selector, event, fn) {
-			var el = this.slider.querySelector(selector);
+			var el = this.slider;
+
+			if(typeof event === 'function') {
+				fn = event;
+				event = selector
+				selector = false;
+			}
+
+			if(selector) {
+				el = el.querySelector(selector);
+			}
 
 			if(el) {
 				el.addEventListener(event, fn);
@@ -191,11 +172,16 @@
 
 	function trigger(name, data) {
 		var cbs = this._cbs[name],
-			i, max;
+			i, max,
+			result = true;
 
 		for(i = 0, max = cbs.length; i < max; i += 1) {
-			cbs[i].call(this, data);
+			if(cbs[i].call(this, data) === false) {
+				result = false;
+			}
 		}
+
+		return result;
 	}
 
 	Slider.hook = function (name, fn) {
@@ -214,17 +200,6 @@
 
 } (window, document));
 
-/* autoplay option */
-Martin.hook('autoplay', function (opts) {
-	var attr = this.attr('autoplay'),
-		opt = isNaN(attr) ? opts.autoplay : attr;
-
-	if(opt) {
-		this.play(opt);
-	}
-});
-
-/* control buttons */
 Martin.hook('controls', function (opts) {
 	var inst = this,
 		slider = inst.slider,
@@ -238,5 +213,4 @@ Martin.hook('controls', function (opts) {
 	inst.listen(next, 'click', function () {
 		inst.slideNext();
 	});
-
 });
