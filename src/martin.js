@@ -49,16 +49,19 @@
 				next = inst.slides[index];
 
 			if(next) {
+				next = next.classList;
 				if(prev) {
-					prev.classList.add(plugin + '-ditr');
-					prev.classList.remove(plugin + '-active');
+					prev = prev.classList;
+					prev.add(plugin + '-ditr');
+					prev.remove(plugin + '-active');
 				}
-				next.classList.add(plugin + '-ditr', plugin + '-active');
-				next.offsetHeight;
+				next.add(plugin + '-ditr');
+				next.add(plugin + '-active');
+				inst.slider.offsetHeight;
 				if(prev) {
-					prev.classList.remove(plugin + '-ditr');
+					prev.remove(plugin + '-ditr');
 				}
-				next.classList.remove(plugin + '-ditr');
+				next.remove(plugin + '-ditr');
 
 				inst.index = index;
 
@@ -81,25 +84,27 @@
 					inst.play();
 				}
 
-				prev = inst.slides[current];
-				next = inst.slides[index];
+				prev = inst.slides[current].classList;
+				next = inst.slides[index].classList;
 
 				// Disable transition
-				prev.classList.add(plugin + '-ditr');
-				next.classList.add(plugin + '-ditr');
+				prev.add(plugin + '-ditr');
+				next.add(plugin + '-ditr');
 				// Remove last classes
-				prev.classList.remove(plugin + '-to-prev', plugin + '-to-next');
-				next.classList.remove(plugin + '-from-prev', plugin + '-from-next');
+				prev.remove(plugin + '-to-prev');
+				prev.remove(plugin + '-to-next');
+				next.remove(plugin + '-from-prev');
+				next.remove(plugin + '-from-next');
 				// Add directions
-				prev.classList.add(dir ? (plugin + '-from-prev') : (plugin + '-from-next'));
-				next.classList.add( ! dir ? (plugin + '-to-prev') : (plugin + '-to-next'));
+				prev.add(plugin + (dir ? '-from-prev' : '-from-next'));
+				next.add(plugin + (! dir ? '-to-prev' : '-to-next'));
 				// Repaint
-				next.offsetHeight;
-				prev.classList.remove(plugin + '-ditr');
-				next.classList.remove(plugin + '-ditr');
+				inst.slider.offsetHeight;
 				// Start transition
-				prev.classList.remove(plugin + '-active');
-				next.classList.add(plugin + '-active');
+				prev.remove(plugin + '-ditr');
+				next.remove(plugin + '-ditr');
+				prev.remove(plugin + '-active');
+				next.add(plugin + '-active');
 
 				trigger.call(inst, 'slide', { dir: dir });
 
@@ -143,9 +148,7 @@
 				}
 
 				inst._playInst = setTimeout(function() {
-					requestAnimationFrame(function() {
-						inst.slideNext();
-					});
+					inst.slideNext();
 				}, timeout);
 				inst.playing = true;
 			}

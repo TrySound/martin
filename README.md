@@ -53,4 +53,3 @@ Simple vanillaJS slider
 ## Polyfills
 
 - [element.classList](https://github.com/jwilsson/domtokenlist) (core)
-- [requestAnimationFrame](https://github.com/ngryman/raf.js) (autoplay)

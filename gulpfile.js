@@ -3,7 +3,8 @@ var gulp = require('gulp'),
 	size = require('gulp-size'),
 	uglify = require('gulp-uglify'),
 	postcss = require('gulp-postcss'),
-	nested = require('postcss-nested');
+	nested = require('postcss-nested'),
+	autoprefixer = require('autoprefixer-core');
 
 gulp.task('js', function () {
 	return gulp.src('src/*.js')
@@ -18,7 +19,8 @@ gulp.task('js', function () {
 gulp.task('css', function () {
 	return gulp.src('src/*.css')
 		.pipe(postcss([
-			nested()
+			nested(),
+			autoprefixer('last 4 versions')
 		]))
 		.pipe(gulp.dest('dist'))
 		.pipe(size({ showFiles: true }));

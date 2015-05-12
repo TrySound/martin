@@ -30,7 +30,9 @@
 
     /* disable transition */
 
-    transition: none !important;
+    -webkit-transition: none !important;
+
+            transition: none !important;
 }
 
 /* Effects */
@@ -44,24 +46,42 @@
 
     visibility: visible;
 
-    transition: transform .5s;
+    -webkit-transition: -webkit-transform .5s;
 
-    transform: translateX(-100%);
+            transition: transform .5s;
+
+    -webkit-transform: translateX(-100%);
+
+        -ms-transform: translateX(-100%);
+
+            transform: translateX(-100%);
 }
 
 .martin-fx-horz .martin-from-prev, .martin-fx-horz .martin-to-prev {
 
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+
+        -ms-transform: translateX(-100%);
+
+            transform: translateX(-100%);
 }
 
 .martin-fx-horz .martin-from-next, .martin-fx-horz .martin-to-next {
 
-    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+
+        -ms-transform: translateX(100%);
+
+            transform: translateX(100%);
 }
 
 .martin-fx-horz .martin-active {
 
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+
+        -ms-transform: translateX(0);
+
+            transform: translateX(0);
 }
 
 .martin-fx-vert {
@@ -73,31 +93,51 @@
 
     visibility: visible;
 
-    transition: transform .5s;
+    -webkit-transition: -webkit-transform .5s;
 
-    transform: translateY(-100%);
+            transition: transform .5s;
+
+    -webkit-transform: translateY(-100%);
+
+        -ms-transform: translateY(-100%);
+
+            transform: translateY(-100%);
 }
 
 .martin-fx-vert .martin-from-prev, .martin-fx-vert .martin-to-prev {
 
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+
+        -ms-transform: translateY(-100%);
+
+            transform: translateY(-100%);
 }
 
 .martin-fx-vert .martin-from-next, .martin-fx-vert .martin-to-next {
 
-    transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+
+        -ms-transform: translateY(100%);
+
+            transform: translateY(100%);
 }
 
 .martin-fx-vert .martin-active {
 
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+
+        -ms-transform: translateY(0);
+
+            transform: translateY(0);
 }
 
 .martin-fx-fade .martin-slide {
 
     visibility: visible;
 
-    transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+
+            transition: opacity .5s;
 
     opacity: 0;
 }
@@ -111,19 +151,29 @@
 
     visibility: visible;
 
-    transition: opacity 1s, transform 1s;
+    -webkit-transition: opacity 1s, -webkit-transform 1s;
+
+            transition: opacity 1s, transform 1s;
 
     opacity: 0;
 }
 
 .martin-fx-leave .martin-from-prev, .martin-fx-leave .martin-from-next {
 
-    transform: scale(.75);
+    -webkit-transform: scale(.75);
+
+        -ms-transform: scale(.75);
+
+            transform: scale(.75);
 }
 
 .martin-fx-leave .martin-active {
 
     opacity: 1;
 
-    transform: scale(1);
+    -webkit-transform: scale(1);
+
+        -ms-transform: scale(1);
+
+            transform: scale(1);
 }

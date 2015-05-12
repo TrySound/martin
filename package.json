@@ -1,6 +1,6 @@
 {
   "name": "martin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple vanillaJS slider",
   "main": "gulpfile.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "Bogdan Chadkin <trysound@yandex.ru>",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer-core": "^5.1.11",
     "gulp": "^3.8.11",
     "gulp-postcss": "^5.1.6",
     "gulp-rename": "^1.2.2",
