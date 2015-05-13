@@ -1,0 +1,59 @@
+body {
+	padding-bottom: 90px;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 2px dashed;
+}
+
+.title,
+.section-title {
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+
+.martin-slideshow {
+	background: rgba(0, 0, 0, .25);
+}
+
+.martin-slide {
+	padding: 60px;
+}
+
+
+.martin-prev,
+.martin-next {
+	cursor: pointer;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+	text-align: center;
+	font-size: 3em;
+	-webkit-user-select: none;
+}
+
+.martin-prev span,
+.martin-next span {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	left: 0;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.martin-prev {
+	left: 0;
+}
+
+.martin-next {
+	right: 0;
+}
