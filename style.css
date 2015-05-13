@@ -38,6 +38,19 @@ a:hover {
 	text-align: center;
 	font-size: 3em;
 	-webkit-user-select: none;
+	transition: background .2s, opacity .2s;
+}
+
+.martin-prev:focus,
+.martin-prev:hover,
+.martin-next:focus,
+.martin-next:hover {
+	background: rgba(0, 0, 0, .15);
+}
+
+.martin-control-inactive {
+	cursor: default;
+	opacity: 0;
 }
 
 .martin-prev span,
