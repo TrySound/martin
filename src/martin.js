@@ -13,7 +13,7 @@
 			el = document.querySelector(el);
 		}
 
-		if(el) {
+		if(el instanceof Node) {
 			inst.slider = el;
 			inst.slides = slice.call(el.querySelectorAll('.' + plugin + '-slide'), 0);
 
@@ -39,7 +39,7 @@
 			return inst;
 		}
 
-		return {};
+		throw Error('Martin: unexpected selector or element');
 	}
 
 	Slider.prototype = {
