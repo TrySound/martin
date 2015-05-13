@@ -2,6 +2,17 @@
 
 Extendable vanillaJS slider
 
+## Supported browsers
+
+Works fine in modern browsers, for older must be used [element.classList](http://caniuse.com/#feat=classlist) polyfill
+
+- ie9 (without transitions)
+- ie10+
+
+### Polyfills
+
+- [DOMTokenList](https://github.com/jwilsson/domtokenlist) (element.classList)
+
 ## Usage
 
 ```html
@@ -88,7 +99,3 @@ Prev and next buttons
 ## Plugins
 
 **[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
-
-## Polyfills
-
-- [element.classList](https://github.com/jwilsson/domtokenlist) (core)
