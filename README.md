@@ -98,4 +98,5 @@ Prev and next buttons
 
 ## Plugins
 
-**[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
+- **[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
+- **[martin-autoplay](https://github.com/TrySound/martin-autoplay)**
