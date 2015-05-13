@@ -10,10 +10,10 @@ var gulp = require('gulp'),
 				' * ',
 				' * Released under the <%= license %> license',
 				' * Copyright (c) <%= new Date().getFullYear() %>, <%= author %>',
-				' */\n\n'].join('\n'),
-	pkg = JSON.parse(require('fs').readFileSync('package.json'));
+				' */\n\n'].join('\n');
 
 gulp.task('js', function () {
+	var pkg = JSON.parse(require('fs').readFileSync('package.json'));
 	return gulp.src(['src/[^_]*.js', 'src/plugins/[^_]*.js'])
 		.pipe($.concat('martin.js'))
 		.pipe($.header(template, pkg))
@@ -28,6 +28,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('css', function () {
+	var pkg = JSON.parse(require('fs').readFileSync('package.json'));
 	return gulp.src(['src/[^_]*.css', 'src/plugins/[^_]*.css'])
 		.pipe($.postcss([
 			nested(),
@@ -40,12 +41,12 @@ gulp.task('css', function () {
 
 gulp.task('dev', function () {
 	gulp.start('build');
-	gulp.watch('src/**/*.css', function () {
+	gulp.watch(['package.json', 'src/**/*.css'], function () {
 		del('dist/*.css', function () {
 			gulp.start('css');
 		});
 	});
-	gulp.watch('src/**/*.js', function () {
+	gulp.watch(['package.json', 'src/**/*.js'], function () {
 		del('dist/*.js', function () {
 			gulp.start('js');
 		});

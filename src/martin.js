@@ -19,6 +19,7 @@
 
 			// Callbacks
 			inst._cbs = {
+				'init': [],
 				'set': [],
 				'slide': [],
 				'slidePrev': [],
@@ -40,6 +41,8 @@
 			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {
 				hooks[hookName].call(inst, opts);
 			}
+
+			trigger.call(inst, 'init');
 
 			return inst;
 		}

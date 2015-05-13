@@ -1,5 +1,5 @@
 /*!
- * martin 0.1.5
+ * martin 0.1.6
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -28,6 +28,7 @@
 
 			// Callbacks
 			inst._cbs = {
+				'init': [],
 				'set': [],
 				'slide': [],
 				'slidePrev': [],
@@ -49,6 +50,8 @@
 			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {
 				hooks[hookName].call(inst, opts);
 			}
+
+			trigger.call(inst, 'init');
 
 			return inst;
 		}
