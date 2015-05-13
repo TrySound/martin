@@ -1,8 +1,8 @@
 {
   "name": "martin",
   "version": "0.1.0",
-  "description": "Simple vanillaJS slider",
-  "main": "gulpfile.js",
+  "description": "Extendable vanillaJS slider",
+  "main": "dist/martin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,10 +1,10 @@
 # martin
 
-Simple vanillaJS slider
+Extendable vanillaJS slider
 
 ## API
 
-### inst = new Slider(el || selector, options)
+### inst = new Martin(el || selector, options)
 
 **inst.setTo(index)**
 
@@ -41,6 +41,12 @@ Listen system event on slider root-element
 **inst.listen(selector, event, callback)**
 
 Listen system event on slider children elements
+
+### Writing a plugin
+
+`Martin.hook(callback)`
+
+Will called with current instance on initialize
 
 ## Core plugins
 
