@@ -8,8 +8,8 @@ Extendable vanillaJS slider
 <!-- .martin-slideshow will be initialized on document ready -->
 <section class="martin-slideshow">
 	<!-- Height based on first slide -->
-	<article class="martin-slide"></article>
 	<!-- First slide is active by default -->
+	<article class="martin-slide"></article>
 	<!-- Active class recommended to prevent flashing -->
 	<article class="martin-slide martin-active"></article>
 	<article class="martin-slide"></article>
@@ -81,6 +81,10 @@ Will called with current instance on initialize
 
 `data-martin-prev="prevClass"`
 `data-martin-next="nextClass"`
+
+## Plugins
+
+**[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
 
 ## Polyfills
 
