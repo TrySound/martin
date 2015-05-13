@@ -28,8 +28,13 @@
 			// Default style
 			el.classList.add(plugin + '-slideshow');
 
-			// Default slide
-			inst.setTo(0);
+			// active slide
+			slide = el.querySelector('.' + plugin + '-slide.' + plugin + '-active');
+			if(slide) {
+				inst.setTo(inst.slides.indexOf(slide));
+			} else {
+				inst.setTo(0);
+			}
 
 			// Hooks
 			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {

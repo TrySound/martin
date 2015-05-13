@@ -2,6 +2,22 @@
 
 Extendable vanillaJS slider
 
+## Usage
+
+```html
+<!-- .martin-slideshow will be initialized on document ready -->
+<section class="martin-slideshow">
+	<!-- Height based on first slide -->
+	<article class="martin-slide"></article>
+	<!-- First slide is active by default -->
+	<!-- Active class recommended to prevent flashing -->
+	<article class="martin-slide martin-active"></article>
+	<article class="martin-slide"></article>
+	<span class="martin-prev"></span>
+	<span class="martin-next"></span>
+</section>
+```
+
 ## API
 
 ### inst = new Martin(el || selector, options)
