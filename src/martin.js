@@ -172,6 +172,8 @@
 			if(el) {
 				el.addEventListener(event, fn);
 			}
+
+			return el;
 		}
 	};
 
