@@ -1,6 +1,6 @@
 {
   "name": "martin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Extendable vanillaJS slider",
   "main": "dist/martin.js",
   "files": [

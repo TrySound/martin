@@ -69,6 +69,8 @@
 				next.remove(plugin + '-ditr');
 
 				inst.index = index;
+
+				return true;
 			}
 		},
 
@@ -111,8 +113,6 @@
 					return true;
 				}
 			}
-
-			return false;
 		},
 
 		slidePrev: function () {
@@ -122,7 +122,7 @@
 				index = inst.slides.length - 1;
 			}
 			if(trigger.call(inst, 'slidePrev', { index: index })) {
-				inst.slideTo(index, false);
+				return inst.slideTo(index, false);
 			}
 		},
 
@@ -133,7 +133,7 @@
 				index = 0;
 			}
 			if(trigger.call(inst, 'slideNext', { index: index })) {
-				inst.slideTo(index, true);
+				return inst.slideTo(index, true);
 			}
 		},
 
