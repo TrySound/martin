@@ -68,19 +68,22 @@ Will called with current instance on initialize
 
 ### Controls
 
+Prev and next buttons
+
 **Options**
 
 ```js
 {
-  prev: prevClass,
-  next: nextClass
+  prev: prevClass, // '.martin-prev' by default
+  next: nextClass // '.martin-next' by default
 }
 ```
 
-**Root data-attributes**
-
-`data-martin-prev="prevClass"`
-`data-martin-next="nextClass"`
+```html
+<div class="martin-slideshow"
+	data-martin-prev="prevClass"
+	data-martin-next="nextClass"></div>
+```
 
 ## Plugins
 
