@@ -1,5 +1,6 @@
 body {
 	padding-bottom: 90px;
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -7,8 +8,13 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
-	border-bottom: 2px dashed;
+p.lead {
+	font-size: 1.125em;
+}
+
+.page-header {
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .title,
@@ -23,7 +29,7 @@ a:hover {
 }
 
 .martin-slide {
-	padding: 60px;
+	padding: 60px 80px;
 }
 
 
@@ -51,6 +57,7 @@ a:hover {
 .martin-control-inactive {
 	cursor: default;
 	opacity: 0;
+	pointer-events: none;
 }
 
 .martin-prev span,
