@@ -1,5 +1,5 @@
 (function (window, document) {
-	var slice = Array.prototype.slice,
+	var slice = [].slice,
 		hooks = {},
 		plugin = 'martin';
 

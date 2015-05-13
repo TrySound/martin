@@ -1,0 +1,27 @@
+{
+  "name": "martin",
+  "homepage": "https://github.com/TrySound/martin",
+  "authors": [
+    "Bogdan Chadkin <trysound@yandex.ru>"
+  ],
+  "description": "Extendable vanillaJS slider",
+  "main": [
+    "dist/martin.js",
+    "dist/martin.css"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "slider",
+    "vanillajs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -2,15 +2,27 @@ var gulp = require('gulp'),
 	$ = require('gulp-load-plugins')(),
 	del = require('del'),
 	nested = require('postcss-nested'),
-	autoprefixer = require('autoprefixer-core');
+	autoprefixer = require('autoprefixer-core'),
+	template = ['/*!',
+				' * <%= name %> <%= version %>',
+				' * <%= description %>',
+				' * <%= homepage %>',
+				' * ',
+				' * Released under the <%= license %> license',
+				' * Copyright (c) <%= new Date().getFullYear() %>, <%= author %>',
+				' */\n\n'].join('\n'),
+	pkg = JSON.parse(require('fs').readFileSync('package.json'));
 
 gulp.task('js', function () {
 	return gulp.src(['src/[^_]*.js', 'src/plugins/[^_]*.js'])
 		.pipe($.concat('martin.js'))
+		.pipe($.header(template, pkg))
 		.pipe(gulp.dest('dist'))
 		.pipe($.size({ showFiles: true }))
 		.pipe($.rename({ suffix: '.min' }))
-		.pipe($.uglify())
+		.pipe($.uglify({
+			preserveComments: 'some'
+		}))
 		.pipe(gulp.dest('dist'))
 		.pipe($.size({ showFiles: true }));
 });
@@ -21,6 +33,7 @@ gulp.task('css', function () {
 			nested(),
 			autoprefixer('last 4 versions')
 		]))
+		.pipe($.header(template, pkg))
 		.pipe(gulp.dest('dist'))
 		.pipe($.size({ showFiles: true }));
 });

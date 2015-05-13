@@ -1,5 +1,14 @@
+/*!
+ * martin 0.1.3
+ * Extendable vanillaJS slider
+ * https://github.com/TrySound/martin
+ * 
+ * Released under the MIT license
+ * Copyright (c) 2015, Bogdan Chadkin <trysound@yandex.ru>
+ */
+
 (function (window, document) {
-	var slice = Array.prototype.slice,
+	var slice = [].slice,
 		hooks = {},
 		plugin = 'martin';
 
