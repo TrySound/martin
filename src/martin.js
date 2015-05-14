@@ -85,10 +85,13 @@
 				prev, next,
 				ditr = plugin + '-ditr';
 
+			// index = Number(index);
 			if(-1 < index && index < max && index !== current) {
 				dir = inst.option(dir, index > current)
+				prev = slides[current];
+				next = slides[index];
 
-				if(trigger.call(inst, 'slide', { index: index, dir: dir })) {
+				if(prev && next && trigger.call(inst, 'slide', { index: index, dir: dir })) {
 					prev = slides[current].classList;
 					next = slides[index].classList;
 
