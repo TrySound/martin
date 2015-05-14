@@ -1,5 +1,5 @@
 /*!
- * martin 0.2.1
+ * martin 0.2.2
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -63,7 +63,7 @@
 				prev = inst.slides[inst.index],
 				next = inst.slides[index],
 				ditr = plugin + '-ditr',
-				active = plugin + 'active';
+				active = plugin + '-active';
 
 			if(next && trigger.call(inst, 'set', { index: index })) {
 				next = next.classList;
