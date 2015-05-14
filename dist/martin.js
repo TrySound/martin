@@ -1,5 +1,5 @@
 /*!
- * martin 0.2.0
+ * martin 0.2.1
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -27,7 +27,7 @@
 			inst.slides = slice.call(el.querySelectorAll('.' + plugin + '-slide'), 0);
 
 			// Callbacks
-			inst._cbs = {
+			inst.cbs = {
 				'init': [],
 				'set': [],
 				'slide': [],
@@ -45,6 +45,7 @@
 
 			// Hooks
 			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {
+				inst['_' + hookName] = {};
 				hooks[hookName].call(inst, opts);
 			}
 
@@ -149,7 +150,7 @@
 		},
 
 		on: function (name, fn) {
-			var cbs = this._cbs[name];
+			var cbs = this.cbs[name];
 
 			if(cbs) {
 				cbs.push(fn);
@@ -200,7 +201,7 @@
 	};
 
 	function trigger(name, data) {
-		var cbs = this._cbs[name],
+		var cbs = this.cbs[name],
 			i, max,
 			result = true;
 
