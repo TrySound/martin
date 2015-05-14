@@ -26,6 +26,12 @@
 				'slideNext': []
 			};
 
+			// Hooks
+			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {
+				inst['_' + hookName] = {};
+				hooks[hookName].call(inst, opts);
+			}
+
 			// Default style
 			el.classList.add(plugin + '-slideshow');
 
@@ -33,12 +39,6 @@
 			slide = el.querySelector('.' + plugin + '-slide.' + plugin + '-active');
 			
 			inst.setTo(slide ? inst.slides.indexOf(slide) : 0);
-
-			// Hooks
-			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {
-				inst['_' + hookName] = {};
-				hooks[hookName].call(inst, opts);
-			}
 
 			trigger.call(inst, 'init');
 
