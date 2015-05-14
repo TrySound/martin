@@ -61,6 +61,10 @@ Action will be prevented if callback will return `false`
 
 Returns data-martin-* attribute value with related type
 
+**inst.option()**
+
+Returns first 'defined' argument
+
 **inst.listen(event, callback)**
 
 Listen system event on slider root-element

@@ -31,11 +31,8 @@
 
 			// active slide
 			slide = el.querySelector('.' + plugin + '-slide.' + plugin + '-active');
-			if(slide) {
-				inst.setTo(inst.slides.indexOf(slide));
-			} else {
-				inst.setTo(0);
-			}
+			
+			inst.setTo(slide ? inst.slides.indexOf(slide) : 0);
 
 			// Hooks
 			for(hookName in hooks) if(hooks.hasOwnProperty(hookName)) {
@@ -54,22 +51,24 @@
 		setTo: function (index) {
 			var inst = this,
 				prev = inst.slides[inst.index],
-				next = inst.slides[index];
+				next = inst.slides[index],
+				ditr = plugin + '-ditr',
+				active = plugin + 'active';
 
 			if(next && trigger.call(inst, 'set', { index: index })) {
 				next = next.classList;
 				if(prev) {
 					prev = prev.classList;
-					prev.add(plugin + '-ditr');
-					prev.remove(plugin + '-active');
+					prev.add(ditr);
+					prev.remove(active);
 				}
-				next.add(plugin + '-ditr');
-				next.add(plugin + '-active');
+				next.add(ditr);
+				next.add(active);
 				inst.slider.offsetHeight;
 				if(prev) {
-					prev.remove(plugin + '-ditr');
+					prev.remove(ditr);
 				}
-				next.remove(plugin + '-ditr');
+				next.remove(ditr);
 
 				inst.index = index;
 
@@ -79,22 +78,22 @@
 
 		slideTo: function (index, dir) {
 			var inst = this,
+				slides = inst.slides,
 				current = inst.index,
-				max = inst.slides.length,
-				prev, next;
+				max = slides.length,
+				prev, next,
+				ditr = plugin + '-ditr';
 
-			if(max > 0 && index < max && index !== current) {
-				if(dir === undefined) {
-					dir = index > current;
-				}
+			if(-1 < index && index < max && index !== current) {
+				dir = inst.option(dir, index > current)
 
-				if(trigger.call(inst, 'slide', { index: index, dir: dir }) !== false) {
-					prev = inst.slides[current].classList;
-					next = inst.slides[index].classList;
+				if(trigger.call(inst, 'slide', { index: index, dir: dir })) {
+					prev = slides[current].classList;
+					next = slides[index].classList;
 
 					// Disable transition
-					prev.add(plugin + '-ditr');
-					next.add(plugin + '-ditr');
+					prev.add(ditr);
+					next.add(ditr);
 					// Remove last classes
 					prev.remove(plugin + '-to-prev');
 					prev.remove(plugin + '-to-next');
@@ -106,8 +105,8 @@
 					// Repaint
 					inst.slider.offsetHeight;
 					// Start transition
-					prev.remove(plugin + '-ditr');
-					next.remove(plugin + '-ditr');
+					prev.remove(ditr);
+					next.remove(ditr);
 					prev.remove(plugin + '-active');
 					next.add(plugin + '-active');
 
@@ -145,6 +144,17 @@
 
 			if(cbs) {
 				cbs.push(fn);
+			}
+		},
+
+		option: function () {
+			var args = arguments,
+				i, max;
+
+			for(i = 0, max = args.length; i < max; i++) {
+				if(args[i] !== undefined) {
+					return args[i];
+				}
 			}
 		},
 
@@ -195,17 +205,20 @@
 	}
 
 	Slider.hook = function (name, fn) {
-		if(name && typeof name === 'string' && typeof fn === 'function') {
+		if(typeof name === 'string' && typeof fn === 'function') {
 			hooks[name] = fn;
 		}
 	};
 
-	window.Martin = Slider;
-
 	document.addEventListener('DOMContentLoaded', function () {
-		slice.call(document.querySelectorAll('.' + plugin + '-slideshow'), 0).forEach(function (el) {
-			new Slider(el);
-		});
+		var el = document.querySelectorAll('.' + plugin + '-slideshow'),
+			i = el.length - 1;
+
+		for( ; i !== -1; i -= 1) {
+			new Slider(el[i]);
+		}
 	});
+
+	window.Martin = Slider;
 
 } (window, document));
