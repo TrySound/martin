@@ -55,6 +55,10 @@ Works fine in modern browsers, for older must be used [element.classList](http:/
 
 Action will be prevented if callback will return `false`
 
+**Martin.get(el)**
+
+Returns instance of Martin by element
+
 ### Helpers
 
 **inst.attr(name)**

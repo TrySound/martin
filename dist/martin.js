@@ -1,5 +1,5 @@
 /*!
- * martin 0.2.4
+ * martin 0.2.5
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -10,12 +10,14 @@
 (function (window, document) {
 	var slice = [].slice,
 		hooks = {},
-		plugin = 'martin';
+		plugin = 'martin',
+		initialized = [],
+		instances = [];
 
 	function Slider(el, opts) {
-		var inst = this,
+		var inst,
 			hookName,
-			slide;
+			slide, index;
 		opts = opts || {};
 
 		if(typeof el === 'string') {
@@ -23,6 +25,15 @@
 		}
 
 		if(el instanceof Node) {
+			inst = Slider.get(el);
+			if(inst) {
+				return inst;
+			} else {
+				inst = this;
+				initialized.push(el);
+				instances.push(inst);
+			}
+
 			inst.slider = el;
 			inst.slides = slice.call(el.querySelectorAll('.' + plugin + '-slide'), 0);
 
@@ -101,8 +112,8 @@
 				next = slides[index];
 
 				if(prev && next && trigger.call(inst, 'slide', { index: index, dir: dir })) {
-					prev = slides[current].classList;
-					next = slides[index].classList;
+					prev = prev.classList;
+					next = next.classList;
 
 					// Disable transition
 					prev.add(ditr);
@@ -220,6 +231,13 @@
 	Slider.hook = function (name, fn) {
 		if(typeof name === 'string' && typeof fn === 'function') {
 			hooks[name] = fn;
+		}
+	};
+
+	Slider.get = function (el) {
+		var index = initialized.indexOf(el);
+		if(index !== -1) {
+			return instances[index];
 		}
 	};
 
