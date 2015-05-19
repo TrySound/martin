@@ -153,7 +153,7 @@
 				cbs = inst.cbs[name];
 
 			if(cbs && typeof fn === 'function') {
-				cbs.shift(fn.bind(inst));
+				cbs.unshift(fn.bind(inst));
 			}
 		},
 
