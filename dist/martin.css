@@ -1,5 +1,5 @@
 /*!
- * martin 1.0.0
+ * martin 1.0.1
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
