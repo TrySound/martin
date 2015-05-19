@@ -7,7 +7,7 @@
     "dist/martin.css"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start --browsers Firefox --single-run"
   },
   "author": "Bogdan Chadkin <trysound@yandex.ru>",
   "license": "MIT",
@@ -23,8 +23,12 @@
     "gulp-rename": "^1.2.2",
     "gulp-size": "^1.2.1",
     "gulp-uglify": "^1.2.0",
+    "karma": "^0.12.31",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-qunit": "^0.1.4",
     "postcss": "^4.1.9",
-    "postcss-nested": "^0.3.1"
+    "postcss-nested": "^0.3.1",
+    "qunitjs": "^1.18.0"
   },
   "repository": {
     "type": "git",
