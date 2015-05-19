@@ -1,6 +1,9 @@
-# martin ![Build Status][travis]
+# martin [![Build Status][ci-img]][ci] [![Gitter][chat-img]][chat]
 
-[travis]: https://api.travis-ci.org/TrySound/martin.svg
+[chat-img]: https://badges.gitter.im/Join%20Chat.svg
+[ci-img]:   https://travis-ci.org/TrySound/martin.svg
+[chat]:     https://gitter.im/TrySound/martin
+[ci]:       https://travis-ci.org/TrySound/martin
 
 Extendable vanillaJS slider
 
