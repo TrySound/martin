@@ -1,0 +1,8 @@
+{
+	"block-indent": "\t",
+	"always-semicolon": true,
+	"space-after-selector-delimiter": "\n",
+	"space-after-opening-brace": "\n",
+	"space-between-declarations": "\n",
+	"space-before-closing-brace": "\n"
+}

@@ -1,6 +1,6 @@
 {
   "name": "martin",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "Extendable vanillaJS slider",
   "main": "dist/martin.js",
   "files": [
@@ -16,6 +16,7 @@
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
+    "gulp-csscomb": "^3.0.3",
     "gulp-header": "^1.2.2",
     "gulp-load-plugins": "^0.10.0",
     "gulp-postcss": "^5.1.6",

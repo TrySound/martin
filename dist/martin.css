@@ -1,5 +1,5 @@
 /*!
- * martin 0.2.5
+ * martin 1.0.0
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -7,182 +7,132 @@
  * Copyright (c) 2015, Bogdan Chadkin <trysound@yandex.ru>
  */
 
+.martin,
 .martin-slideshow {
-
-    position: relative;
+	position: relative;
 }
 
 .martin-slide {
-
-    visibility: hidden;
+	position: relative;
+	visibility: hidden;
+	z-index: 0;
 }
 
-.martin-slide:nth-of-type(n+2) {
-
-    position: absolute;
-
-    top: 0;
-
-    right: 0;
-
-    bottom: 0;
-
-    left: 0;
+.martin-slide:nth-child(n+2) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 
 .martin-active {
-
-    visibility: visible;
+	visibility: visible;
+	z-index: 100;
 }
 
-.martin-ditr {
-
-    /* disable transition */
-
-    -webkit-transition: none !important;
-
-            transition: none !important;
-}
 
 /* Effects */
 
 .martin-fx-horz {
-
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .martin-fx-horz .martin-slide {
-
-    visibility: visible;
-
-    -webkit-transition: -webkit-transform .5s;
-
-            transition: transform .5s;
-
-    -webkit-transform: translateX(-100%);
-
-        -ms-transform: translateX(-100%);
-
-            transform: translateX(-100%);
+	visibility: visible;
 }
 
-.martin-fx-horz .martin-from-prev, .martin-fx-horz .martin-to-prev {
-
-    -webkit-transform: translateX(-100%);
-
-        -ms-transform: translateX(-100%);
-
-            transform: translateX(-100%);
+.martin-fx-horz .martin-tr {
+	-webkit-transition: -webkit-transform .5s;
+	transition: transform .5s;
 }
 
-.martin-fx-horz .martin-from-next, .martin-fx-horz .martin-to-next {
+.martin-fx-horz .martin-slide,
+.martin-fx-horz .martin-from-prev,
+.martin-fx-horz .martin-to-prev {
+	-webkit-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+}
 
-    -webkit-transform: translateX(100%);
-
-        -ms-transform: translateX(100%);
-
-            transform: translateX(100%);
+.martin-fx-horz .martin-from-next,
+.martin-fx-horz .martin-to-next {
+	-webkit-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	transform: translateX(100%);
 }
 
 .martin-fx-horz .martin-active {
-
-    -webkit-transform: translateX(0);
-
-        -ms-transform: translateX(0);
-
-            transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
 }
 
 .martin-fx-vert {
-
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .martin-fx-vert .martin-slide {
-
-    visibility: visible;
-
-    -webkit-transition: -webkit-transform .5s;
-
-            transition: transform .5s;
-
-    -webkit-transform: translateY(-100%);
-
-        -ms-transform: translateY(-100%);
-
-            transform: translateY(-100%);
+	visibility: visible;
 }
 
-.martin-fx-vert .martin-from-prev, .martin-fx-vert .martin-to-prev {
-
-    -webkit-transform: translateY(-100%);
-
-        -ms-transform: translateY(-100%);
-
-            transform: translateY(-100%);
+.martin-fx-vert .martin-tr {
+	-webkit-transition: -webkit-transform .5s;
+	transition: transform .5s;
 }
 
-.martin-fx-vert .martin-from-next, .martin-fx-vert .martin-to-next {
+.martin-fx-vert .martin-slide,
+.martin-fx-vert .martin-from-prev,
+.martin-fx-vert .martin-to-prev {
+	-webkit-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
 
-    -webkit-transform: translateY(100%);
-
-        -ms-transform: translateY(100%);
-
-            transform: translateY(100%);
+.martin-fx-vert .martin-from-next,
+.martin-fx-vert .martin-to-next {
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
 }
 
 .martin-fx-vert .martin-active {
-
-    -webkit-transform: translateY(0);
-
-        -ms-transform: translateY(0);
-
-            transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
 }
 
 .martin-fx-fade .martin-slide {
-
-    visibility: visible;
-
-    -webkit-transition: opacity .5s;
-
-            transition: opacity .5s;
-
-    opacity: 0;
+	visibility: visible;
+	-webkit-transition: opacity .5s;
+	transition: opacity .5s;
+	opacity: 0;
 }
 
 .martin-fx-fade .martin-active {
-
-    opacity: 1;
+	opacity: 1;
 }
 
 .martin-fx-leave .martin-slide {
-
-    visibility: visible;
-
-    -webkit-transition: opacity 1s, -webkit-transform 1s;
-
-            transition: opacity 1s, transform 1s;
-
-    opacity: 0;
+	visibility: visible;
+	opacity: 0;
 }
 
-.martin-fx-leave .martin-from-prev, .martin-fx-leave .martin-from-next {
+.martin-fx-leave .martin-tr {
+	-webkit-transition: opacity 1.25s, -webkit-transform 1.25s;
+	transition: opacity 1.25s, transform 1.25s;
+}
 
-    -webkit-transform: scale(.75);
-
-        -ms-transform: scale(.75);
-
-            transform: scale(.75);
+.martin-fx-leave .martin-from-prev,
+.martin-fx-leave .martin-from-next {
+	-webkit-transform: scale(.75);
+	-ms-transform: scale(.75);
+	transform: scale(.75);
 }
 
 .martin-fx-leave .martin-active {
-
-    opacity: 1;
-
-    -webkit-transform: scale(1);
-
-        -ms-transform: scale(1);
-
-            transform: scale(1);
+	opacity: 1;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
 }

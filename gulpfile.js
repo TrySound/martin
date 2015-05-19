@@ -34,6 +34,7 @@ gulp.task('css', function () {
 			nested(),
 			autoprefixer('last 4 versions')
 		]))
+		.pipe($.csscomb())
 		.pipe($.header(template, pkg))
 		.pipe(gulp.dest('dist'))
 		.pipe($.size({ showFiles: true }));

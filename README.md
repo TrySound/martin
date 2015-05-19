@@ -17,9 +17,8 @@ Works fine in modern browsers, for older must be used [element.classList](http:/
 
 ```html
 <!-- .martin-slideshow will be initialized on document ready -->
-<section class="martin-slideshow">
+<section class="martin-slideshow martin-fx-horz">
 	<!-- Height based on first slide -->
-	<!-- First slide is active by default -->
 	<article class="martin-slide"></article>
 	<!-- Active class recommended to prevent flashing -->
 	<article class="martin-slide martin-active"></article>
@@ -29,13 +28,37 @@ Works fine in modern browsers, for older must be used [element.classList](http:/
 </section>
 ```
 
+### Effects
+
+Effect is on of this css classes:
+
+- `.martin-fx-horz`
+- `.martin-fx-vert`
+- `.martin-fx-fade`
+- `.martin-fx-leave`
+
+### Controls
+
+Prev and next buttons
+
+**Options**
+
+```html
+<div class="martin-slideshow"
+	data-martin-prev=".martin-prev"
+	data-martin-next=".martin-next"></div>
+```
+
+```js
+{
+  prev: '.martin-prev',
+  next: '.martin-next'
+}
+```
+
 ## API
 
 ### inst = new Martin(el || selector, options)
-
-**inst.setTo(index)**
-
-`callback({ index })`
 
 **inst.slideTo(index, direction)**
 
@@ -51,13 +74,9 @@ Works fine in modern browsers, for older must be used [element.classList](http:/
 
 **inst.on(event, callback)**
 
-`event` is one of `set`, `slide`, `slidePrev`, `slideNext`
+`event` is one of `init`, `slide`, `slidePrev`, `slideNext`
 
 Action will be prevented if callback will return `false`
-
-**Martin.get(el)**
-
-Returns instance of Martin by element
 
 ### Helpers
 
@@ -77,32 +96,25 @@ Listen system event on slider root-element
 
 Listen system event on slider children elements
 
+**Martin.get(el)**
+
+Returns instance of Martin by element
+
 ### Writing a plugin
 
 `Martin.hook(callback)`
 
-Will called with current instance on initialize
-
-## Core plugins
-
-### Controls
-
-Prev and next buttons
-
-**Options**
+To combine hooks you may use `init` event:
 
 ```js
-{
-  prev: prevClass, // '.martin-prev' by default
-  next: nextClass // '.martin-next' by default
-}
+Martin.hook('plugin', function (opts) {
+	this.on('init', function () {
+		// All hooks are ready
+	});
+});
 ```
 
-```html
-<div class="martin-slideshow"
-	data-martin-prev="prevClass"
-	data-martin-next="nextClass"></div>
-```
+Will called with current instance on initialize
 
 ## Plugins
 
@@ -110,3 +122,9 @@ Prev and next buttons
 - **[martin-autoplay](https://github.com/TrySound/martin-autoplay)**
 - **[martin-finite](https://github.com/TrySound/martin-finite)** - limits infinite sliding
 - **[martin-pager](https://github.com/TrySound/martin-pager)**
+
+##License
+
+[The MIT License (MIT)](LICENSE)
+
+Copyright &copy; 2015 Bogdan Chadkin

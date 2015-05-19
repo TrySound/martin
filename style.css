@@ -1,5 +1,4 @@
 body {
-	padding-bottom: 90px;
 	font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -12,27 +11,49 @@ p.lead {
 	font-size: 1.125em;
 }
 
-.page-header {
-	margin-top: 30px;
-	margin-bottom: 30px;
+.header {
+	text-align: center;
+	overflow: hidden;
+	padding: 1em 0;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 1em;
 }
 
-.title,
+.header h1 {
+	position: relative;
+	display: inline-block;
+}
+
+@media (min-width: 768px) {
+	.header iframe {
+		margin-left: .5em;
+	}
+}
+
+.footer {
+	padding: 2em 0;
+	text-align: center;
+	color: rgba(0, 0, 0, .5);
+}
+
+.section {
+	margin-bottom: 2em;
+}
+
 .section-title {
-	margin-top: 2em;
-	margin-bottom: 1em;
+	text-align: center;
 }
 
 
 .martin-slideshow {
 	background: rgba(0, 0, 0, .25);
-	margin-bottom: 60px;
+	max-width: 640px;
+	margin: 0 auto;
 }
 
-.martin-slide {
+.slide-content {
 	padding: 60px 80px;
 }
-
 
 .martin-prev,
 .martin-next {
@@ -42,23 +63,19 @@ p.lead {
 	top: 0;
 	bottom: 0;
 	width: 60px;
-	text-align: center;
 	font-size: 3em;
+	text-align: center;
+	text-shadow: 0 0 10px rgba(0, 0, 0, .75);
 	-webkit-user-select: none;
 	transition: background .2s, opacity .2s;
 }
 
-.martin-prev:focus,
-.martin-prev:hover,
-.martin-next:focus,
-.martin-next:hover {
-	background: rgba(0, 0, 0, .15);
+.martin-prev {
+	left: 0;
 }
 
-.martin-control-inactive {
-	cursor: default;
-	opacity: 0;
-	pointer-events: none;
+.martin-next {
+	right: 0;
 }
 
 .martin-prev span,
@@ -71,10 +88,14 @@ p.lead {
 	transform: translateY(-50%);
 }
 
-.martin-prev {
-	left: 0;
+.control-light {
+	color: #ccc;
 }
 
-.martin-next {
-	right: 0;
+.martin-prev:focus,
+.martin-prev:hover,
+.martin-next:focus,
+.martin-next:hover {
+	background: rgba(0, 0, 0, .15);
 }
+
