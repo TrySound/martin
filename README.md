@@ -18,6 +18,13 @@ Works fine in modern browsers, for older must be used [element.classList](http:/
 
 - [DOMTokenList](https://github.com/jwilsson/domtokenlist) (element.classList)
 
+## Plugins
+
+- **[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
+- **[martin-autoplay](https://github.com/TrySound/martin-autoplay)**
+- **[martin-finite](https://github.com/TrySound/martin-finite)** - limits infinite sliding
+- **[martin-pager](https://github.com/TrySound/martin-pager)**
+
 ## Usage
 
 ```html
@@ -120,13 +127,6 @@ Martin.hook('plugin', function (opts) {
 ```
 
 Will called with current instance on initialize
-
-## Plugins
-
-- **[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
-- **[martin-autoplay](https://github.com/TrySound/martin-autoplay)**
-- **[martin-finite](https://github.com/TrySound/martin-finite)** - limits infinite sliding
-- **[martin-pager](https://github.com/TrySound/martin-pager)**
 
 ##License
 
