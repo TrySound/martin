@@ -1,4 +1,6 @@
-# martin
+# martin ![Build Status][travis]
+
+[travis]: https://api.travis-ci.org/TrySound/martin.svg
 
 Extendable vanillaJS slider
 
