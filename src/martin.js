@@ -61,8 +61,8 @@
 			inst.cbs = {
 				'init': [],
 				'slide': [],
-				'slidePrev': [],
-				'slideNext': []
+				'slideprev': [],
+				'slidenext': []
 			};
 
 			// Hooks
@@ -123,7 +123,7 @@
 			if(index === -1) {
 				index = inst.length - 1;
 			}
-			if(trigger(inst, 'slidePrev', { index: index })) {
+			if(trigger(inst, 'slideprev', { index: index })) {
 				return inst.slideTo(index, false);
 			}
 		},
@@ -134,14 +134,14 @@
 			if(index === inst.length) {
 				index = 0;
 			}
-			if(trigger(inst, 'slideNext', { index: index })) {
+			if(trigger(inst, 'slidenext', { index: index })) {
 				return inst.slideTo(index, true);
 			}
 		},
 
 		on: function (name, fn) {
 			var inst = this,
-				cbs = inst.cbs[name];
+				cbs = inst.cbs[name.toLowerCase()];
 
 			if(cbs && typeof fn === 'function') {
 				cbs.unshift(fn.bind(inst));
