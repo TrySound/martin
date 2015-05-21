@@ -21,6 +21,10 @@
 		visibility: visible;
 		z-index: 100;
 	}
+
+	&-ditr {
+		transition: none !important;
+	}
 }
 
 
@@ -31,8 +35,6 @@
 		overflow: hidden;
 		.martin-slide {
 			visibility: visible;
-		}
-		.martin-tr {
 			transition: transform .5s;
 		}
 		.martin-slide,
@@ -53,8 +55,6 @@
 		overflow: hidden;
 		.martin-slide {
 			visibility: visible;
-		}
-		.martin-tr {
 			transition: transform .5s;
 		}
 		.martin-slide,
@@ -85,10 +85,8 @@
 	&-leave {
 		.martin-slide {
 			visibility: visible;
-			opacity: 0;
-		}
-		.martin-tr {
 			transition: opacity 1.25s, transform 1.25s;
+			opacity: 0;
 		}
 		.martin-from-prev,
 		.martin-from-next {

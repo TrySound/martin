@@ -2,6 +2,7 @@
 	var document = global.document,
 		plugin = 'martin',
 		classActive = plugin + '-active',
+		classDitr = plugin + '-ditr',
 		initialized = [],
 		instances = [],
 		hooks = {};
@@ -42,6 +43,7 @@
 					slide = inst[key] = slides[key];
 					// Clear active slides
 					slideList = slide.classList;
+					slideList.add(classDitr);
 					if(slideList.contains(classActive)) {
 						index = key;
 						activeList = slideList;
@@ -83,8 +85,7 @@
 		slideTo: function (index, dir) {
 			var inst = this,
 				activeIndex = inst.index,
-				prev, next,
-				classTr = plugin + '-tr';
+				prev, next;
 
 			if(-1 < index && index < inst.length && index !== activeIndex) {
 				dir = inst.option(dir, index > activeIndex)
@@ -93,10 +94,10 @@
 
 				if(trigger(inst, 'slide', { index: index, dir: dir })) {
 					// Remove last classes
-					prev.remove(classTr);
+					prev.add(classDitr);
 					prev.remove(plugin + '-to-prev');
 					prev.remove(plugin + '-to-next');
-					next.remove(classTr);
+					next.add(classDitr);
 					next.remove(plugin + '-from-prev');
 					next.remove(plugin + '-from-next');
 					// Add directions
@@ -105,8 +106,8 @@
 					// Repaint
 					inst.el.offsetHeight;
 					// Start transition
-					prev.add(classTr);
-					next.add(classTr);
+					prev.remove(classDitr);
+					next.remove(classDitr);
 					prev.remove(classActive);
 					next.add(classActive);
 
