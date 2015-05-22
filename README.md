@@ -20,10 +20,11 @@ Works fine in modern browsers, for older must be used [element.classList](http:/
 
 ## Plugins
 
-- **[martin-swipe](https://github.com/TrySound/martin-swipe)** - swipe for touchable devices
+- **[martin-swipe](https://github.com/TrySound/martin-swipe)**
 - **[martin-autoplay](https://github.com/TrySound/martin-autoplay)**
-- **[martin-finite](https://github.com/TrySound/martin-finite)** - limits infinite sliding
+- **[martin-finite](https://github.com/TrySound/martin-finite)**
 - **[martin-pager](https://github.com/TrySound/martin-pager)**
+- **[martin-tr](https://github.com/TrySound/martin-tr)**
 
 ## Usage
 
