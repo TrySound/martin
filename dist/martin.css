@@ -1,5 +1,5 @@
 /*!
- * martin 1.0.1
+ * martin 1.1.0
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -31,6 +31,11 @@
 	z-index: 100;
 }
 
+.martin-ditr {
+	-webkit-transition: none !important;
+	transition: none !important;
+}
+
 
 /* Effects */
 
@@ -40,9 +45,6 @@
 
 .martin-fx-horz .martin-slide {
 	visibility: visible;
-}
-
-.martin-fx-horz .martin-tr {
 	-webkit-transition: -webkit-transform .5s;
 	transition: transform .5s;
 }
@@ -74,9 +76,6 @@
 
 .martin-fx-vert .martin-slide {
 	visibility: visible;
-}
-
-.martin-fx-vert .martin-tr {
 	-webkit-transition: -webkit-transform .5s;
 	transition: transform .5s;
 }
@@ -115,12 +114,9 @@
 
 .martin-fx-leave .martin-slide {
 	visibility: visible;
-	opacity: 0;
-}
-
-.martin-fx-leave .martin-tr {
 	-webkit-transition: opacity 1.25s, -webkit-transform 1.25s;
 	transition: opacity 1.25s, transform 1.25s;
+	opacity: 0;
 }
 
 .martin-fx-leave .martin-from-prev,

@@ -1,5 +1,5 @@
 /*!
- * martin 1.0.1
+ * martin 1.1.0
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -11,6 +11,7 @@
 	var document = global.document,
 		plugin = 'martin',
 		classActive = plugin + '-active',
+		classDitr = plugin + '-ditr',
 		initialized = [],
 		instances = [],
 		hooks = {};
@@ -51,6 +52,7 @@
 					slide = inst[key] = slides[key];
 					// Clear active slides
 					slideList = slide.classList;
+					slideList.add(classDitr);
 					if(slideList.contains(classActive)) {
 						index = key;
 						activeList = slideList;
@@ -70,8 +72,8 @@
 			inst.cbs = {
 				'init': [],
 				'slide': [],
-				'slidePrev': [],
-				'slideNext': []
+				'slideprev': [],
+				'slidenext': []
 			};
 
 			// Hooks
@@ -92,8 +94,7 @@
 		slideTo: function (index, dir) {
 			var inst = this,
 				activeIndex = inst.index,
-				prev, next,
-				classTr = plugin + '-tr';
+				prev, next;
 
 			if(-1 < index && index < inst.length && index !== activeIndex) {
 				dir = inst.option(dir, index > activeIndex)
@@ -102,10 +103,10 @@
 
 				if(trigger(inst, 'slide', { index: index, dir: dir })) {
 					// Remove last classes
-					prev.remove(classTr);
+					prev.add(classDitr);
 					prev.remove(plugin + '-to-prev');
 					prev.remove(plugin + '-to-next');
-					next.remove(classTr);
+					next.add(classDitr);
 					next.remove(plugin + '-from-prev');
 					next.remove(plugin + '-from-next');
 					// Add directions
@@ -114,8 +115,8 @@
 					// Repaint
 					inst.el.offsetHeight;
 					// Start transition
-					prev.add(classTr);
-					next.add(classTr);
+					prev.remove(classDitr);
+					next.remove(classDitr);
 					prev.remove(classActive);
 					next.add(classActive);
 
@@ -132,7 +133,7 @@
 			if(index === -1) {
 				index = inst.length - 1;
 			}
-			if(trigger(inst, 'slidePrev', { index: index })) {
+			if(trigger(inst, 'slideprev', { index: index })) {
 				return inst.slideTo(index, false);
 			}
 		},
@@ -143,14 +144,14 @@
 			if(index === inst.length) {
 				index = 0;
 			}
-			if(trigger(inst, 'slideNext', { index: index })) {
+			if(trigger(inst, 'slidenext', { index: index })) {
 				return inst.slideTo(index, true);
 			}
 		},
 
 		on: function (name, fn) {
 			var inst = this,
-				cbs = inst.cbs[name];
+				cbs = inst.cbs[name.toLowerCase()];
 
 			if(cbs && typeof fn === 'function') {
 				cbs.unshift(fn.bind(inst));
