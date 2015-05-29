@@ -1,5 +1,5 @@
 /*!
- * martin 1.1.0
+ * martin 1.1.1
  * Extendable vanillaJS slider
  * https://github.com/TrySound/martin
  * 
@@ -18,7 +18,7 @@
 	z-index: 0;
 }
 
-.martin-slide:nth-child(n+2) {
+.martin-slide ~ .martin-slide {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -34,6 +34,12 @@
 .martin-ditr {
 	-webkit-transition: none !important;
 	transition: none !important;
+}
+
+.martin-prev,
+.martin-next {
+	z-index: 200;
+	cursor: pointer;
 }
 
 
