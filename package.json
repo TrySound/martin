@@ -1,6 +1,6 @@
 {
   "name": "martin",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Extendable vanillaJS slider",
   "main": "dist/martin.js",
   "files": [
@@ -13,13 +13,12 @@
   "author": "Bogdan Chadkin <trysound@yandex.ru>",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer-core": "^5.1.11",
-    "del": "^1.1.1",
+    "autoprefixer": "^5.2.0",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
     "gulp-csscomb": "^3.0.3",
     "gulp-header": "^1.2.2",
-    "gulp-load-plugins": "^0.10.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-postcss": "^5.1.6",
     "gulp-rename": "^1.2.2",
     "gulp-size": "^1.2.1",

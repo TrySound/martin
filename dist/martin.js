@@ -1,26 +1,16 @@
 /*!
- * martin 1.1.1
- * Extendable vanillaJS slider
+ * martin 1.1.2
  * https://github.com/TrySound/martin
- * 
- * Released under the MIT license
- * Copyright (c) 2015, Bogdan Chadkin <trysound@yandex.ru>
+ * Copyright 2015 Bogdan Chadkin <trysound@yandex.ru>
  */
 
-(function (global) {
-	var document = global.document,
-		plugin = 'martin',
+(function (document) {
+	var plugin = 'martin',
 		classActive = plugin + '-active',
 		classDitr = plugin + '-ditr',
 		initialized = [],
 		instances = [],
 		hooks = {};
-
-	if(typeof exports === 'object') {
-		module.exports = Slider;
-	} else {
-		global.Martin = Slider;
-	}
 
 	function Slider(el, opts) {
 		var inst, key, index,
@@ -240,18 +230,24 @@
 		}
 	});
 
-} ((0, eval)(this)));
+	hooks['controls'] = function (opts) {
+		var inst = this,
+			prev = inst.attr('prev') || opts.prev || '.martin-prev',
+			next = inst.attr('next') || opts.next || '.martin-next';
 
-Martin.hook('controls', function (opts) {
-	var inst = this,
-		prev = inst.attr('prev') || opts.prev || '.martin-prev',
-		next = inst.attr('next') || opts.next || '.martin-next';
+		inst.prev = inst.listen(prev, 'click', function () {
+			inst.slidePrev();
+		});
 
-	inst.prev = inst.listen(prev, 'click', function () {
-		inst.slidePrev();
-	});
+		inst.next = inst.listen(next, 'click', function () {
+			inst.slideNext();
+		});
+	};
 
-	inst.next = inst.listen(next, 'click', function () {
-		inst.slideNext();
-	});
-});
+	if (typeof module === "object" && module.exports){
+		module.exports = Slider;
+	} else {
+		window.Martin = Slider;
+	}
+
+} (document));
