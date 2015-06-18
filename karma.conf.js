@@ -8,7 +8,6 @@ module.exports = function(config) {
     frameworks: ['qunit'],
 
     files: [
-      'https://rawgit.com/jwilsson/domtokenlist/master/dist/domtokenlist.js',
       'dist/martin.js',
       'tests/[^_]*.js'
     ],

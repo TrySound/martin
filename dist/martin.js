@@ -1,5 +1,5 @@
 /*!
- * martin 1.1.2
+ * martin 1.1.3
  * https://github.com/TrySound/martin
  * Copyright 2015 Bogdan Chadkin <trysound@yandex.ru>
  */
